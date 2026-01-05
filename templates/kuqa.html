@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Funnel+Display:wght@300..800&family=Geom:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='kuqa.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='web-logo.ico') }}" type="image/x-icon">
+</head>
+<body>
+
+<div id="cover-div">
+    <button id="start">Open quiz</button>
+</div>
+<div id="blurring-div" class="blurring-div-light">
+</div>
+<div id="submit-cover">
+</div>
+<div id="sub-body">
+    <div class="header header-light">
+        <button style="position: absolute; left: 2px;top: 25px;width: 61px; height: 30px; font-size: 9px; box-shadow:0 0 30px rgba(0, 0, 0, 0.5);" id="modeToggler">THEME</button>
+        <img src="{{ url_for('static', filename='images/close.png') }}" id="quiz-rules-img">
+        <div id="tooltip"><span id="tooltip-text">Quiz details!</span></div>
+        <p class="heading">{{ quiz }}<span id="python-text">QUIZ</span></p>
+        <div id="sub-heading-details">
+            <p id="points-text">Total quiz points: <b>20</b></p>
+            <div id="time-container">
+                <div class="time-div"><p id="minutes">39</p></div>
+                <p id="separator"><b>:</b></p>
+                <div class="time-div"><p id="seconds">59</p></div>
+            </div>
+        </div>
+    </div>
+    <div id="quiz-rules" class="quiz-rules-light">
+            <p id="details-head" class="details-head-light"><b>Student details</b></p>
+            <div id="details">
+            <p>{{ name }}</p>
+            <p>{{ id }}</p>
+            </div>
+            <p id="instructions"><b>Instructions</b></p>
+            <p class="p-details-light">This quiz has 20 questions and will last for 40 minutes only, 2 minutes for each question.</p>
+            <p class="p-details-light">Read questions carefully before finalising your Choice.</p>
+            <p class="p-details-light"><b>Please make sure you are satisfied with your choices before clicking prepare submit button on the right</b></p>
+            <p class="p-details" style="color:red;"><b>After clicking prepare submit you will not be able to make any changes to your answers</b></p>
+            <p class="p-details-light">Best of luck!.</p>
+            <p id="bottom-instructions" class="bottom-instructions-light"> <b>Quiz time countdown on the top right of the screen will start immediately after closing this view.</b> </p>
+    </div>
+    <div id="scroll-indicator">
+         <img src="{{ url_for('static', filename='images/down.png') }}" id="scroll-image-down">
+         <img src="{{ url_for('static', filename='images/up.png') }}" id="scroll-image-up">
+    </div>
+    <div id="questions" class="questions-light">
+            <div class="question-container">
+            <div class="qn"><span class="question-number">3</span></div>
+            <div class="q q-light">
+                <p class="question_from_source">The question goes here Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  laboris nisi ut aliquip ex ea commodo consequat</p>
+                <div class="q-options q-options-light">
+                    <span id="00" class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                    <span id="01" class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                    <span id="02" class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                    <span id="03" class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+
+                </div>
+            </div>
+            </div>
+    </div>
+    <button id="prepare-submit">Prepare submission</button>
+    <button id="submit">Submit</button>
+</div>
+
+<script src="{{ url_for('static', filename='kuqa.js') }}"></script>
+</body>
+</html>

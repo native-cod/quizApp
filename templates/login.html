@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KUQA LOGIN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Funnel+Display:wght@300..800&family=Geom:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='web-logo.ico') }}" type="image/x-icon">
+</head>
+<body>
+<div id="header">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" id="logo">
+    <p class="logo-text">University of kyrenia</p>
+</div>
+<div id="sub-body">
+    <div id="form-head">  <p class="form-head-text">Quiz form</p> </div>
+    <p class="welcome-text">Welcome!</p>
+    <p class="welcome-head-text">Please enter details</p>
+<!--    <form method="POST" action="/main" id="form">-->
+    <form method="POST" action="/kuqa_main" id="form">
+        <input type="text" id="name" name="name" value="" placeholder="Student Name">
+        <input type="text" id="id" name="id" value="" placeholder="University ID">
+        <input type="text" id="code" name="code" value="" placeholder="Course code / name">
+    </form>
+    <button id="submit" class="raised"> Submit </button>
+</div>
+<script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>

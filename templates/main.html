@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KUQA MAIN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Funnel+Display:wght@300..800&family=Geom:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='web-logo.ico') }}" type="image/x-icon">
+</head>
+<body>
+
+<div id="cover-div">
+    <button id="start">Open quiz</button>
+</div>
+<div id="sub-body">
+    <div id="quiz-rules">
+        <p style="font-size:25px;"><b>Student details</b></p>
+        <div id="details">
+        <p>{{ name }}</p>
+        <p>{{ id }}</p>
+        </div>
+        <p id="instructions"><b>Instructions</b></p>
+        <p>This quiz has 20 questions and will last for 40 minutes only, 2 minutes for each question.</p>
+        <p><b>Please make sure you are satisfied with your choices before clicking on confirm</b></p>
+        <p><b>you can not come back to previous questions.</b></p>
+        <p>After confirming your choices click on confirm choices button to move to the next set of questions.</p>
+        <p>Best of luck!.</p>
+        <p style="border-left:3px solid red; padding-left:3px; transition:.5s;" id="bottom-instructions"> <b>Quiz time countdown on the top right of the screen will start immediately after closing this view.</b> </p>
+    </div>
+<div class="header">
+    <img src="{{ url_for('static', filename='images/close.png') }}" id="quiz-rules-img">
+    <div id="tooltip"><span id="tooltip-text">Quiz details!</span></div>
+    <p class="heading">{{code}}<span id="python-text">QUIZ</span></p>
+    <div id="sub-heading-details">
+        <p id="points-text">Total quiz points: <b>20</b></p>
+        <div id="time-container">
+            <div class="time-div"><p id="minutes">40</p></div>
+            <p id="separator"><b>:</b></p>
+            <div class="time-div"><p id="seconds">00</p></div>
+        </div>
+    </div>
+</div>
+
+<div id="questions">
+    <div class="qt">
+        <div class="qn"><span class="question-number">1</span></div>
+        <div class="q">
+            <p class="question_from_source">The question goes here Lorem ipsum dolor sit amet laboris  nisi ut aliquip ex ea commodo consequat
+                Lorem ipsum  Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.
+            </p>
+            <div class="q-options">
+                <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="one" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="one" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="one" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="one" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="qt">
+        <div class="qn"><span class="question-number">2</span></div>
+        <div class="q">
+            <p class="question_from_source">The question goes here Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+            <div class="q-options">
+                <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="two" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="two" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="two" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="two" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="qt">
+        <div class="qn"><span class="question-number">3</span></div>
+        <div class="q">
+            <p class="question_from_source">The question goes here Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  laboris nisi ut aliquip ex ea commodo consequat</p>
+            <div class="q-options">
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="three" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="three" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="three" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="three" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident.</span>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="qt">
+        <div class="qn"><span class="question-number">4</span></div>
+        <div class="q">
+            <p class="question_from_source">The question goes here Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                The question goes here Lorem ipsum dolor
+                The question goes here Lorem ipsum dolor
+                The question goes here Lorem ipsum dolor</p>
+            <div class="q-options">
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="four" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident, sunt in culpa.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="four" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident, sunt in.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="four" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident, sunt in.</span>
+                 </div>
+                 <div class="q-options-checkbox">
+                     <input type="radio" class="check-box" name="four" value=""/><span class="question_options_from_source">1.occaecat cupidatat non proident, sunt in.</span>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="bottom-div">
+    <button id="confirm" class="raised">Confirm choices</button>
+    <div id="divider">
+        <span id="question-number-tracker">4</span>
+    </div>
+    <span id="question-number"> / 20</span>
+    <button id="submit" class="raised">Submit</button>
+</div>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
