@@ -30,6 +30,7 @@ The main brains of the application has been created by leveraging on python’s 
 
 
 ROUTE FLOW.
+
 '/' login page -> kuqa main page '/kuqa_main' -> results page '/results' { " final route"} 
                               |                            |  
                         '/questions'                   '/preview'
