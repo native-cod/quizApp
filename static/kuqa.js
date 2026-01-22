@@ -1,7 +1,10 @@
 let QUESTIONS = []
 let CanSubmit = false
+
 // selected options by the student
 response = []
+//
+submitted_response = []
 // sorted selected options by the student using the sortResponses function ' line 293 '
 organised_response = []
 // main questions div container
@@ -161,10 +164,18 @@ let submit = document.getElementById("submit");
 
 prepare_submission.addEventListener("click", ()=>{
    buttonClick()
+   for(let i = 0 ;i < 20; i++){
+       for(let j = 0; j < response.length; j++){
+          if(i == Number(response[j][0])){
+             break
+          }
+          if(i != Number(response[j][0]) && j == response.length - 1){
+             response[response.length] = [String(i),"un-responded","null","null"]
+          }
+       }
+   }
    if(canSubmit){
-//       if(response.length >= QUESTIONS.length / 2){
            endOfQuiz()
-//       }
     }
    }
 )
@@ -305,6 +316,7 @@ function endOfQuiz(){
 // Insertion sort algorithm user selected responses might not be in a sorted order
 // sort the users selected answers based on the question number in ascending order
 function sortResponses(){
+    console.log(" length"+response.length)
     for(let i=1;i<response.length;i++){
        let index = i
        for(let j=i-1;j>=0;j--){
@@ -319,8 +331,14 @@ function sortResponses(){
     for(let r=0;r<response.length;r++){
         organised_response[organised_response.length] = response[r][1];
     }
+    time_spent = ""
+    if(time_seconds-quiz_time_seconds < 10){
+        time_spent = String(time_minutes-quiz_time_minutes)+" : 0"+String(time_seconds-quiz_time_seconds)
+    }else{
+        time_spent = String(time_minutes-quiz_time_minutes)+" : "+String(time_seconds-quiz_time_seconds)
+    }
 
-    time_spent = String(time_minutes-quiz_time_minutes)+" : "+String(time_seconds-quiz_time_seconds)
+    // fill un responded questions
 }
 
 // Submitting the selected options to the server at route in the main.py File " @app.route('/submit-questions', methods=['POST']) "
@@ -358,7 +376,6 @@ setInterval(()=>{
 },300)
 
 question_container.addEventListener("scroll", (event) => {
-    console.log(question_container.scrollTop)
     if(previous < question_container.scrollTop){
         down.style.opacity = "0.5"
         up.style.opacity = "1.0"
@@ -391,13 +408,15 @@ let qs = document.getElementsByClassName("q");
 let question = document.getElementsByClassName("question_from_source");
 let q_options_container = document.getElementsByClassName("q-options");
 let question_option = document.getElementsByClassName("question_options_from_source");
+let th_selector = document.getElementById("theme-selector");
 //let bottom_instructions = document.getElementById("bottom-instructions");
 
 up = document.getElementById("scroll-image-up");
 down = document.getElementById("scroll-image-down");
 is_light=true
 
-document.getElementById("modeToggler").addEventListener("click",()=>{
+theme_button = document.getElementById("modeToggler");
+theme_button.addEventListener("click",()=>{
     if(is_light){
         darkMode()
         is_light=false
@@ -408,12 +427,16 @@ document.getElementById("modeToggler").addEventListener("click",()=>{
 })
 
 function lightMode(){
+    theme_button.style.border = "0.5px solid white"
+    th_selector.style.left = "2px";
     up.src="static/images/up.png";
     down.src="static/images/down.png";
 
     blurring.classList.remove("blurring-div-dark")
     sub_body.classList.remove("sub-body-dark");
     header.classList.remove("header-dark");
+
+//    question_container.classList.add("questions-light")
 
     quiz_rules.classList.remove("quiz-rules-dark")
 
@@ -423,7 +446,10 @@ function lightMode(){
     }
     bottom_instructions.classList.remove("bottom-instructions-dark")
 
-    question_container.classList.add("questions-dark")
+    question_container.classList.remove("questions-dark")
+    question_container.classList.add("questions-light")
+
+
     for(let j=0;j<qns.length;j++){
         qns[j].classList.remove("qn-dark")
         question[j].classList.remove("question_from_source-dark")
@@ -438,6 +464,8 @@ function lightMode(){
 
 }
 function darkMode(){
+    theme_button.style.border = "0.5px solid gray"
+    th_selector.style.left = "26.5px"
     up.src="static/images/updark.png";
     down.src="static/images/downdark.png";
 
@@ -454,6 +482,7 @@ function darkMode(){
     bottom_instructions.classList.add("bottom-instructions-dark")
 
     question_container.classList.add("questions-dark")
+
     for(let j=0;j<qns.length;j++){
         qns[j].classList.add("qn-dark")
         question[j].classList.add("question_from_source-dark")

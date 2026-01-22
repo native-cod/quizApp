@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     fetch('http://127.0.0.1:5000/preview')
     .then(res => res.json())
     .then(data => {
-
             preview_questions = data.preview
             score = data.score
+
             timeSpent = data.time
 
             setUpScoreCard(score)
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     .catch(err => console.error(err))
 })
 
+const question_answered = document.getElementById("questions-answered");
 function setUpScoreCard(score_value){
     const score_div = document.getElementById("score-div");
 
@@ -25,7 +26,7 @@ function setUpScoreCard(score_value){
     document.getElementById("score").innerText = String(score_per)+"%";
 
     const remarks = document.getElementById("quiz-remarks");
-    const question_answered = document.getElementById("questions-answered");
+
     const quiz_time = document.getElementById("time-spent");
 
     if(score_per >= 0 && score_per <= 50){
@@ -38,7 +39,6 @@ function setUpScoreCard(score_value){
         score_div.style.backgroundColor = "#47d203";
         remarks.innerHTML = "<b> Well Done </b>";
     }
-    question_answered.innerHTML = "<b>"+preview_questions.length+"</b>";
     quiz_time.innerText = timeSpent
 //    document.getElementById("score-div").innerText = score;
 
@@ -50,7 +50,9 @@ let question_view = to_clone.cloneNode(true)
 to_clone.style.display = "none"
 
 function setupPreviewView(){
+    let answered_count = 0
     for(let i=0;i<preview_questions.length;i++){
+
         let question = preview_questions[i].question;
         let answer = preview_questions[i].correct_answer;
         let selection = preview_questions[i].selected_answer;
@@ -64,10 +66,18 @@ function setupPreviewView(){
 
         if(isCorrect){
            clone_question.querySelector(".highlight-option").style.backgroundColor="#00cb00"
+           answered_count += 1
         }else{
-            clone_question.querySelector(".question-details").style.borderLeft = "8.5px solid #ff0000";
-            clone_question.querySelector(".highlight-option").style.backgroundColor="#ff0000"
+            if(selection == "un-responded"){
+                clone_question.querySelector(".question-details").style.borderLeft = "8.5px solid rgb(164 153 153)";
+                clone_question.querySelector(".highlight-option").style.backgroundColor="rgb(164 153 153)"
+            }else{
+                clone_question.querySelector(".question-details").style.borderLeft = "8.5px solid #ff0000";
+                clone_question.querySelector(".highlight-option").style.backgroundColor="#ff0000"
+                answered_count += 1
+            }
         }
         preview.appendChild(clone_question)
     }
+    question_answered.innerHTML = "<b>"+answered_count+"</b>";
 }

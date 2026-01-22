@@ -435,6 +435,5 @@ def markAnswers(answers):
 #
 #     return render_template('main.html', name=name, id=student_id, code=quiz_name)
 
-
 if __name__ == '__main__':
     app.run(debug=True)

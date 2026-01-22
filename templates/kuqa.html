@@ -21,7 +21,11 @@
 </div>
 <div id="sub-body">
     <div class="header header-light">
-        <button style="position: absolute; left: 2px;top: 25px;width: 61px; height: 30px; font-size: 9px; box-shadow:0 0 30px rgba(0, 0, 0, 0.5);" id="modeToggler">THEME</button>
+        <div class="theme" id="modeToggler">
+            <div id="theme-selector"></div>
+            <img src="{{ url_for('static', filename='images/sun-dl.png') }}" class="theme-img">
+            <img src="{{ url_for('static', filename='images/moon-dl.png') }}" class="theme-img">
+        </div>
         <img src="{{ url_for('static', filename='images/close.png') }}" id="quiz-rules-img">
         <div id="tooltip"><span id="tooltip-text">Quiz details!</span></div>
         <p class="heading">{{ quiz }}<span id="python-text">QUIZ</span></p>
@@ -43,8 +47,8 @@
             <p id="instructions"><b>Instructions</b></p>
             <p class="p-details-light">This quiz has 20 questions and will last for 40 minutes only, 2 minutes for each question.</p>
             <p class="p-details-light">Read questions carefully before finalising your Choice.</p>
-            <p class="p-details-light"><b>Please make sure you are satisfied with your choices before clicking prepare submit button on the right</b></p>
-            <p class="p-details" style="color:red;"><b>After clicking prepare submit you will not be able to make any changes to your answers</b></p>
+            <p class="p-details-light"><b>Please make sure you are satisfied with your choices before clicking prepare submission button on the right</b></p>
+            <p class="p-details" style="color:red;"><b>After clicking prepare submission you will not be able to make any changes to your answers</b></p>
             <p class="p-details-light">Best of luck!.</p>
             <p id="bottom-instructions" class="bottom-instructions-light"> <b>Quiz time countdown on the top right of the screen will start immediately after closing this view.</b> </p>
     </div>
